@@ -2,28 +2,13 @@ name: Test Industrial CI pipeline
 on: [push, pull_request]
 
 jobs:
-  format_check:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-    - uses: 'ros-industrial/industrial_ci@master'
-      env:
-        ROS_DISTRO: melodic
-        CLANG_FORMAT_CHECK: file
-        CLANG_FORMAT_VERSION: "9"
-
-  build:
-    runs-on: ubuntu-latest
+  industrial_ci:
     strategy:
-      fail-fast: false
       matrix:
         env:
-          - ROS_DISTRO: foxy
-            ROS_REPO: main
-            UPSTREAM_WORKSPACE: .ci.rosinstall
-            DOCKER_RUN_OPTS: --network static_test_net
-            IMMEDIATE_TEST_OUTPUT: true
+          - {ROS_DISTRO: foxy, ROS_REPO: testing}
+          - {ROS_DISTRO: dashing, ROS_REPO: main}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
