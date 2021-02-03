@@ -43,14 +43,14 @@ public:
       [this]() -> void
       {
         msg_ = std::make_unique<std_msgs::msg::String>();
-        msg_->data = "Hello World: " + std::to_string(count_++);
+        msg_->data = "Hello WorldA: " + std::to_string(count_++);
         RCLCPP_INFO(this->get_logger(), "Publishing: '%s'", msg_->data.c_str());
         // Put the message into a queue to be processed by the middleware.
         // This call is non-blocking.
         pub_->publish(std::move(msg_));
       };
     // Create a publisher with a custom Quality of Service profile.
-    rclcpp::QoS qos(rclcpp::KeepLast(7));
+    rclcpp::QoS qos(rclcpp::KeepLast(1));
     pub_ = this->create_publisher<std_msgs::msg::String>("chatter", qos);
 
     // Use a timer to schedule periodic message publishing.

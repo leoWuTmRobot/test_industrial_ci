@@ -65,9 +65,7 @@ int main(int argc, char ** argv)
   // TODO(wjwwood): consider error condition
   auto result = send_request(node, client, request);
   if (result) {
-    RCLCPP_INFO(node->get_logger(), "AAAAAAA");
     RCLCPP_INFO(node->get_logger(), "Result of add_two_ints: %zd", result->sum);
-    RCLCPP_INFO(node->get_logger(), "BBBBBBBBB");
   } else {
     RCLCPP_ERROR(node->get_logger(), "Interrupted while waiting for response. Exiting.");
   }

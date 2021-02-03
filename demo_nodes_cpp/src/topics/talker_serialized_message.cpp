@@ -58,7 +58,7 @@ public:
         // which can do the above conversion for us.
         // For this, we initially fill up a std_msgs/String message and fill up its content
         auto string_msg = std::make_shared<std_msgs::msg::String>();
-        string_msg->data = "Hello World:" + std::to_string(count_++);
+        string_msg->data = "Hello WorldC:" + std::to_string(count_++);
 
         // We know the size of the data to be sent, and thus can pre-allocate the
         // necessary memory to hold all the data.
