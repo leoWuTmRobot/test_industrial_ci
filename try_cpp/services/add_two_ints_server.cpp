@@ -11,22 +11,24 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+#include <memory>
 #include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/srv/add_two_ints.hpp"
 
-#include <memory>
-
-void add(const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
-          std::shared_ptr<example_interfaces::srv::AddTwoInts::Response>      response)
+void add(
+  const std::shared_ptr<example_interfaces::srv::AddTwoInts::Request> request,
+  std::shared_ptr<example_interfaces::srv::AddTwoInts::Response>      response)
 {
   response->sum = request->a + request->b;
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Incoming request\na: %ld" " b: %ld",
-                request->a, request->b);
-  RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "sending back response: [%ld]", (long int)response->sum);
+  RCLCPP_INFO(
+    rclcpp::get_logger("rclcpp"), "Incoming request\na: %ld" " b: %ld",
+    request->a, request->b);
+  RCLCPP_INFO(
+    rclcpp::get_logger("rclcpp"), "sending back response: [%ld]",
+    (long int)response->sum);
 }
 
-int main(int argc, char **argv)
+int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
 
