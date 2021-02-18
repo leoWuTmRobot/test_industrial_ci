@@ -52,7 +52,6 @@ if(BUILD_TESTING)
   # Add each test case.  Multi-executable tests can be specified in
   # semicolon-separated strings, like  exe1;exe2.
   set(tutorial_tests
-    
     "talker:listener")
   set(service_tutorial_tests
     "add_two_ints_server:add_two_ints_client"
